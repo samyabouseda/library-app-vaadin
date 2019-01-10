@@ -26,7 +26,7 @@ public class BooksList extends VerticalLayout {
 
     private boolean isAuthenticated = true;
 
-    BookManager bookManager;
+    private BookManager bookManager;
 
     @Inject
     public BooksList(BookManager bookManager) {
@@ -56,30 +56,47 @@ public class BooksList extends VerticalLayout {
         grid.addColumn(new ComponentRenderer<>(book -> {
             TextField title = new TextField();
             title.setValue(book.getTitle());
+            title.addValueChangeListener(event -> {
+                book.setTitle(event.getValue());
+                updateBook(book);
+            });
+
             return title;
         }));
 
         grid.addColumn(new ComponentRenderer<>(book -> {
             TextField author = new TextField();
             author.setValue(book.getAuthor());
+            author.addValueChangeListener(event -> {
+                book.setAuthor(event.getValue());
+                updateBook(book);
+            });
             return author;
         }));
 
         grid.addColumn(new ComponentRenderer<>(book -> {
             TextField editor = new TextField();
             editor.setValue(book.getEditor());
+            editor.addValueChangeListener(event -> {
+                book.setEditor(event.getValue());
+                updateBook(book);
+            });
             return editor;
         }));
 
         grid.addColumn(new ComponentRenderer<>(book -> {
             TextField year = new TextField();
             year.setValue(book.getYear());
+            year.addValueChangeListener(event -> {
+                book.setYear(event.getValue());
+                updateBook(book);
+            });
             return year;
         }));
 
         grid.addColumn(new NativeButtonRenderer<Book>(
                 "Supprimer",
-                event -> deleteBook()
+                event -> deleteBook(event.getId(), event.getTitle())
         ));
 
         newBookBtn.addClickListener(
@@ -88,10 +105,15 @@ public class BooksList extends VerticalLayout {
         add(navBar, grid, newBookBtn);
     }
 
-    private void deleteBook() {
-        bookManager.deleteBook(0);
+    private void deleteBook(int id, String name) {
+        bookManager.deleteBook(id);
         updateView();
-        Notification.show("Livre supprimer avec succes.", 3000, Notification.Position.BOTTOM_START);
+        Notification.show("Livre \""+name+"\" supprimé avec succes.", 3000, Notification.Position.BOTTOM_START);
+    }
+
+    private void updateBook(Book book) {
+        bookManager.updateBook(book);
+        updateView();
     }
 
     private void updateView() {

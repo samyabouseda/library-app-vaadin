@@ -36,8 +36,8 @@ public class BookManager {
         return q.getResultList();
     }
 
-    public void modifyBook(int id, Book modifiedBook) {
-        Book book = entityManager.find(Book.class, id);
+    public void updateBook(Book modifiedBook) {
+        Book book = entityManager.find(Book.class, modifiedBook.getId());
         book.setTitle(modifiedBook.getTitle());
         book.setAuthor(modifiedBook.getAuthor());
         book.setEditor(modifiedBook.getEditor());

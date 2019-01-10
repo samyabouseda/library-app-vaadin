@@ -21,7 +21,7 @@ public class YearField extends TextField implements HasValidator<String> {
         ValidationResult result = getDefaultValidator().apply(getValue(), null);
         if (result.isError()) {
             setInvalid(true);
-            setErrorMessage("Veuillez entrer une annee au format YYYY.");
+            setErrorMessage("Veuillez entrer une anneé au format YYYY.");
         } else {
             setInvalid(false);
         }

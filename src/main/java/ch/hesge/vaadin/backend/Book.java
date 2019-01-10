@@ -23,6 +23,14 @@ public class Book  {
         this.year = year;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Book() {
     }
 
@@ -57,5 +65,6 @@ public class Book  {
     public void setYear(String year) {
         this.year = year;
     }
+
 }
 
