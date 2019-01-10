@@ -1,4 +1,4 @@
-package ch.hesge.vaadin.ui.common;
+package ch.hesge.vaadin.ui.common.components;
 
 public class LoginEvent {
 

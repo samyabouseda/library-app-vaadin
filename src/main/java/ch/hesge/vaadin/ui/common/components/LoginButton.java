@@ -1,4 +1,4 @@
-package ch.hesge.vaadin.ui.common;
+package ch.hesge.vaadin.ui.common.components;
 
 import com.vaadin.flow.component.button.Button;
 

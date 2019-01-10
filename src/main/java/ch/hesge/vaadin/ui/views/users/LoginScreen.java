@@ -1,8 +1,8 @@
 package ch.hesge.vaadin.ui.views.users;
 
-import ch.hesge.vaadin.ui.common.LoginButton;
-import ch.hesge.vaadin.ui.common.LoginEvent;
-import ch.hesge.vaadin.ui.common.NavBar;
+import ch.hesge.vaadin.ui.common.components.LoginButton;
+import ch.hesge.vaadin.ui.common.components.LoginEvent;
+import ch.hesge.vaadin.ui.common.components.NavBar;
 import com.google.common.eventbus.EventBus;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;

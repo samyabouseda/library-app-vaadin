@@ -1,7 +1,8 @@
 package ch.hesge.vaadin.ui.views;
 
 
-import ch.hesge.vaadin.ui.common.NavBar;
+import ch.hesge.vaadin.ui.common.components.NavBar;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
@@ -20,6 +21,8 @@ public class Home extends VerticalLayout {
         Image image = new Image();
         image.setSrc("https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Ftimedotcom.files.wordpress.com%2F2015%2F06%2F521811839-copy.jpg&w=1600&c=sc&poi=face&q=70");
 
-        add(navBar, area1, image);
+        Div pageContent = new Div(area1, image);
+
+        add(navBar, pageContent);
     }
 }

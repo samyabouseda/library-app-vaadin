@@ -1,16 +1,16 @@
-package ch.hesge.vaadin.ui.common;
+package ch.hesge.vaadin.ui.common.components;
 
 import ch.hesge.vaadin.ui.views.books.BooksList;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.RouterLink;
 
 
 public class NavBar extends HorizontalLayout {
 
-    private final H2 title = new H2("Simple Library");
+    private final Label title = new Label("Simple Library");
     private final RouterLink bookListLink = new RouterLink("Livre", BooksList.class);
     private Div header = new Div();
     private final Button connexionButton = new Button("Connexion");
@@ -23,7 +23,6 @@ public class NavBar extends HorizontalLayout {
     
     private void initView() {
         initHeader();
-        add(header);
     }
 
     private void initHeader() {
@@ -39,6 +38,8 @@ public class NavBar extends HorizontalLayout {
             });
             header.add(connexionButton);
         }
+        header.setSizeFull();
+        add(header);
     }
 
     public void hideConnexionButton() {

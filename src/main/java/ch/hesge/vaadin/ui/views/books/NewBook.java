@@ -3,7 +3,7 @@ package ch.hesge.vaadin.ui.views.books;
 
 import ch.hesge.vaadin.backend.Book;
 import ch.hesge.vaadin.backend.BookManager;
-import ch.hesge.vaadin.ui.common.NavBar;
+import ch.hesge.vaadin.ui.common.components.NavBar;
 import ch.hesge.vaadin.ui.common.components.YearField;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
