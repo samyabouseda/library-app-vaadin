@@ -45,7 +45,11 @@ Here is an example of such a tomcat-users.xml
 You would then user "highlander" as username and "ramirez" as password while login to the app.
 
 ### Accessing the app
-In order to access the app, open your favorit browser and go to:
+In order to access the app, open your favorite browser and go to:
 
 [http://localhost:8080/simple_library_war_exploded/](http://localhost:8080/simple_library_war_exploded/)
 
+## Authors
+
+* **Samy Abouseda** - [samyabouseda](https://github.com/samyabouseda)
+* **Thomas Carreira** - [ThomasCarreira](https://github.com/ThomasCarreira)
