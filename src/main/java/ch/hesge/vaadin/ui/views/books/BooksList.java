@@ -13,6 +13,8 @@ import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.data.renderer.NativeButtonRenderer;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.server.VaadinSession;
+import com.vaadin.flow.server.WrappedSession;
 
 import javax.inject.Inject;
 
@@ -23,15 +25,18 @@ public class BooksList extends VerticalLayout {
     private final NavBar navBar = new NavBar();
     private final Button newBookBtn = new Button("Nouveau");
     private final Grid<Book> grid = new Grid<>();
-
-    private boolean isAuthenticated = true; //TODO: Authentication with user.xml
-    // TODO: Add web.xml for standards
+    private boolean isAuthenticated = false;
 
     private BookManager bookManager;
 
     @Inject
     public BooksList(BookManager bookManager) {
         this.bookManager = bookManager;
+        WrappedSession session = VaadinSession.getCurrent().getSession();
+        try {
+            isAuthenticated = (boolean) session.getAttribute("logged");
+        } catch (Exception e) { e.printStackTrace(); }
+
         initView();
         updateView();
     }

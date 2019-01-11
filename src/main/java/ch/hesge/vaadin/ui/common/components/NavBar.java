@@ -4,11 +4,13 @@ import ch.hesge.vaadin.ui.views.books.BooksList;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.RouterLink;
+import com.vaadin.flow.server.VaadinServletRequest;
 import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.server.WrappedSession;
+
+import javax.servlet.ServletException;
 
 
 public class NavBar extends HorizontalLayout {
@@ -27,14 +29,20 @@ public class NavBar extends HorizontalLayout {
         } catch (Exception e) {
             isUserAuthenticated = false;
         }
-        Notification.show("logged: " + isUserAuthenticated);
         initHeader();
 
     }
 
     private void initHeader() {
         logoutBtn.addClickListener(buttonClickEvent -> {
-            //doLogout()
+            // use an eventBus ?
+            WrappedSession session = VaadinSession.getCurrent().getSession();
+            VaadinServletRequest request = VaadinServletRequest.getCurrent();
+            session.setAttribute("logged", false);
+            session.invalidate();
+            try {
+                request.logout();
+            } catch (ServletException e) {}
         });
 
         loginBtn.addClickListener(buttonClickEvent -> {
