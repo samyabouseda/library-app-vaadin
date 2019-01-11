@@ -6,12 +6,12 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 @WebListener
-public class InitialDataLoader implements ServletContextListener {
+public class Fixtures implements ServletContextListener {
 
     BookManager bookManager;
 
     @Inject
-    public InitialDataLoader(BookManager bookManager) {
+    public Fixtures(BookManager bookManager) {
         this.bookManager = bookManager;
     }
 

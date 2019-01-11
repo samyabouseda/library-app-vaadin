@@ -24,7 +24,8 @@ public class BooksList extends VerticalLayout {
     private final Button newBookBtn = new Button("Nouveau");
     private final Grid<Book> grid = new Grid<>();
 
-    private boolean isAuthenticated = true;
+    private boolean isAuthenticated = true; //TODO: Authentication with user.xml
+    // TODO: Add web.xml for standards
 
     private BookManager bookManager;
 
@@ -62,7 +63,7 @@ public class BooksList extends VerticalLayout {
             });
 
             return title;
-        }));
+        })).setHeader("Titre").setResizable(true);
 
         grid.addColumn(new ComponentRenderer<>(book -> {
             TextField author = new TextField();
@@ -72,7 +73,7 @@ public class BooksList extends VerticalLayout {
                 updateBook(book);
             });
             return author;
-        }));
+        })).setHeader("Auteur").setResizable(true);
 
         grid.addColumn(new ComponentRenderer<>(book -> {
             TextField editor = new TextField();
@@ -82,7 +83,7 @@ public class BooksList extends VerticalLayout {
                 updateBook(book);
             });
             return editor;
-        }));
+        })).setHeader("Editeur").setResizable(true);;
 
         grid.addColumn(new ComponentRenderer<>(book -> {
             TextField year = new TextField();
@@ -92,7 +93,7 @@ public class BooksList extends VerticalLayout {
                 updateBook(book);
             });
             return year;
-        }));
+        })).setHeader("Année").setResizable(true);;
 
         grid.addColumn(new NativeButtonRenderer<Book>(
                 "Supprimer",

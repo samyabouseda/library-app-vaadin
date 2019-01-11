@@ -33,7 +33,6 @@ public class LoginScreen extends VerticalLayout {
         loginButton.addClickListener(buttonClickEvent -> {
             eventBus.post(new LoginEvent(usernameField.getValue(), passwordField.getValue()));
         });
-
         add(navBar, usernameField, passwordField, loginButton);
     }
 
