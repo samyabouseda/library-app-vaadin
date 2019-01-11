@@ -1,22 +1,12 @@
 # A simple library management app
 Simple Library is a very simple app built with [Vaadin](https://vaadin.com/) to apply and test my knowledge of the framework.
 
-## Deployment
+### Installing
 
+A step by step series of examples that tell you how to get a development env running
 1. Download the [TomEE WebProfile](https://tomee.apache.org/download-ng.html) v7.0.x.
 2. Download the WAR of the app [here](http://somelink.com).
-3. Go inside of the Place the WAR inside of the webapps directory.
-```
-$CATALINA_HOME\webapps 
-```
-Web applications are deployed under the $CATALINA_HOME\webapps directory.
 
-4. Start the Tomcat server by simply running the startup script located at $CATALINA_HOME\bin\startup. There is a .bat and a .sh in every installation.
-
-```
-$CATALINA_HOME/bin/startup.sh
-```
-Choose the appropriate option depending on whether you are using a Windows or Unix based operating system.
 ### Adding new user
 Then locat the `tomcat-ursers.xml` file which should be   $CATALINA_HOME/bin/startup.sh
 In order to add new users, you need to add the following lines to tomcat-users.xml.
@@ -44,7 +34,21 @@ Here is an example of such a tomcat-users.xml
 
 You would then user "highlander" as username and "ramirez" as password while login to the app.
 
-### Accessing the app
+### Deployment
+1. Go inside of the Place the WAR inside of the webapps directory.
+```
+$CATALINA_HOME\webapps 
+```
+Web applications are deployed under the $CATALINA_HOME\webapps directory.
+
+2. Start the Tomcat server by simply running the startup script located at $CATALINA_HOME\bin\startup. There is a .bat and a .sh in every installation.
+
+```
+$CATALINA_HOME/bin/startup.sh
+```
+Choose the appropriate option depending on whether you are using a Windows or Unix based operating system.
+
+### Using the app
 In order to access the app, open your favorite browser and go to:
 
 [http://localhost:8080/simple_library_war_exploded/](http://localhost:8080/simple_library_war_exploded/)
