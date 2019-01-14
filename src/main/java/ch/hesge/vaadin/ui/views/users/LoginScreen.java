@@ -36,13 +36,13 @@ public class LoginScreen extends VerticalLayout {
     private void initView() {
         navBar.hideLoginButtons();
         loginButton.addClickListener(buttonClickEvent -> doLogin());
+        usernameField.focus();
         add(navBar, usernameField, passwordField, loginButton);
     }
 
     private void doLogin() {
         VaadinServletRequest request =  VaadinServletRequest.getCurrent();
         if (! isUserAuthenticated(request)) {
-            //check if credentials are not empty ==> let the component handle that (eventBus, etc)
             String username = usernameField.getValue();
             String password = passwordField.getValue();
             try {

@@ -3,12 +3,11 @@ package ch.hesge.vaadin.ui.views.books;
 
 import ch.hesge.vaadin.backend.Book;
 import ch.hesge.vaadin.backend.BookManager;
-import ch.hesge.vaadin.ui.common.components.NavBar;
-import ch.hesge.vaadin.ui.common.components.YearField;
-import ch.hesge.vaadin.ui.views.errorpages.Forbidden;
-import com.vaadin.flow.component.ComponentEvent;
+import ch.hesge.vaadin.ui.common.components.*;
+import com.google.common.eventbus.EventBus;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -17,6 +16,7 @@ import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.server.WrappedSession;
 
 import javax.ejb.EJB;
+import javax.inject.Inject;
 
 
 @Route("new-book")
@@ -24,37 +24,63 @@ import javax.ejb.EJB;
 public class NewBook extends VerticalLayout {
 
     private final NavBar navBar = new NavBar();
-    private final TextField title = new TextField("Titre");
-    private final TextField author = new TextField("Auteur");
-    private final TextField editor = new TextField("Editeur");
+    private final TextField title = new FormTextField("Titre");
+    private final TextField author = new FormTextField("Auteur");
+    private final TextField editor = new FormTextField("Editeur");
     private final YearField year = new YearField();
     private final Button createBtn = new Button("Créer");
+    private VerticalLayout form = new VerticalLayout();
+    private EventBus eventBus = new EventBus();
+    private WrappedSession session;
 
-    @EJB
     private BookManager bookManager;
 
-    public NewBook() {
-        WrappedSession session = VaadinSession.getCurrent().getSession();
-        try {
-            if((boolean)session.getAttribute("logged")) {
-                initView();
-            }
-        } catch (Exception e) {
-            UI.getCurrent().navigate("403");
-            UI.getCurrent().getPage().reload();
+    @Inject
+    public NewBook(BookManager bookManager) {
+        this.bookManager = bookManager;
+        session = VaadinSession.getCurrent().getSession();
+        if(userSessionExist()) {
+            if(userIsLogged()) { initView(); }
+            else { redirectTo("403"); }
+        } else {
+            redirectTo("403");
         }
+    }
+
+    private boolean userIsLogged() {
+        return (boolean)session.getAttribute("logged");
+    }
+
+    private boolean userSessionExist() {
+        return this.session.getAttribute("logged") != null;
+    }
+
+    private void redirectTo(String location) {
+        UI.getCurrent().navigate("403");
+        UI.getCurrent().getPage().reload();
     }
 
     private void initView() {
         createBtn.addClickListener(buttonClickEvent -> saveBook());
-        add(navBar, title, author, editor, year, createBtn);
+        eventBus.register(createBtn);
+        form.add(title, author, editor, year);
+        add(navBar, form, createBtn); // Should create a Form component extending VerticalLayout
     }
 
     private void saveBook() {
-        //TODO: Validate fields properly before creating new book.
-        bookManager.addBook(new Book(title.getValue(), author.getValue(), editor.getValue(), year.getValue()));
-        this.getUI().ifPresent(ui -> ui.navigate("books"));
-        Notification.show("Livre "+title.getValue()+" cree avec succes!.", 3000, Notification.Position.BOTTOM_START);
+        eventBus.post(new CreationEvent());
+        if(formIsValid()) {
+            bookManager.addBook(new Book(title.getValue(), author.getValue(), editor.getValue(), year.getValue()));
+            this.getUI().ifPresent(ui -> ui.navigate("books"));
+            Notification.show("Livre "+title.getValue()+" cree avec succes!.", 3000, Notification.Position.BOTTOM_START);
+        }
+    }
+
+    private boolean formIsValid() {
+        //This method should be done the proper way in the From component
+        return form.getChildren()
+                .filter(c ->  c instanceof FormTextField || c instanceof YearField)
+                .allMatch(c -> ((IsValidable)c).isValid());
     }
 
 }

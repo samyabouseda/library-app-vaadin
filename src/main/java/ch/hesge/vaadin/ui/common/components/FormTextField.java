@@ -1,22 +1,25 @@
 package ch.hesge.vaadin.ui.common.components;
 
+import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.HasValidator;
 import com.vaadin.flow.data.binder.ValidationResult;
 import com.vaadin.flow.data.binder.Validator;
+import com.vaadin.flow.data.validator.StringLengthValidator;
 
-public class YearField extends TextField implements HasValidator<String>, IsValidable {
 
-    private boolean isValid;
 
-    public YearField() {
-        setLabel("Annee");
-        setPlaceholder("1994");
-        setWidth("100px");
-        setMaxLength(4);
-        isRequired();
-        addValueChangeListener(event -> validate());
+public class FormTextField extends TextField implements HasValidator<String>, IsValidable {
+
+    private EventBus eventBus;
+    private boolean isValid = false;
+
+    public FormTextField(String label) {
+        super(label);
+        addValueChangeListener(event -> {
+            validate();
+        });
         addKeyDownListener(event -> validate());
     }
 
@@ -28,9 +31,13 @@ public class YearField extends TextField implements HasValidator<String>, IsVali
             isValid = false;
             setErrorMessage(result.getErrorMessage());
         } else {
-            setInvalid(false);
             isValid = true;
+            setInvalid(false);
         }
+    }
+
+    public void setEventBus(EventBus eventBus) {
+        this.eventBus = eventBus;
     }
 
     public boolean isValid() {
@@ -39,7 +46,7 @@ public class YearField extends TextField implements HasValidator<String>, IsVali
 
     @Override
     public Validator<String> getDefaultValidator() {
-        return new YearFieldValidator("Veuillez entrer une anneé au format YYYY.");
+        return new StringLengthValidator("Vous devez remplir ce champ.", 1, 100);
     }
 
     @Subscribe
