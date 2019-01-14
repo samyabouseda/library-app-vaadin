@@ -13,6 +13,10 @@ import com.vaadin.flow.router.Route;
 public class Home extends VerticalLayout {
 
     public Home() {
+        initView();
+    }
+
+    private void initView() {
         NavBar navBar = new NavBar();
 
         TextArea area1 = new TextArea();

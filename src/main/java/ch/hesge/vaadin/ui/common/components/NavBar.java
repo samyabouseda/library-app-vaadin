@@ -30,19 +30,18 @@ public class NavBar extends HorizontalLayout {
             isUserAuthenticated = false;
         }
         initHeader();
-
     }
 
     private void initHeader() {
         logoutBtn.addClickListener(buttonClickEvent -> {
-            // use an eventBus ?
             WrappedSession session = VaadinSession.getCurrent().getSession();
             VaadinServletRequest request = VaadinServletRequest.getCurrent();
             session.setAttribute("logged", false);
             session.invalidate();
             try {
                 request.logout();
-            } catch (ServletException e) {}
+            } catch (ServletException e) { }
+            this.getUI().ifPresent(ui -> ui.navigate(""));
         });
 
         loginBtn.addClickListener(buttonClickEvent -> {

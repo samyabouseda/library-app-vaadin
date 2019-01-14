@@ -4,6 +4,7 @@ import ch.hesge.vaadin.ui.common.components.LoginButton;
 import ch.hesge.vaadin.ui.common.components.NavBar;
 import com.google.common.eventbus.EventBus;
 import com.sun.security.auth.UserPrincipal;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -13,6 +14,7 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinServletRequest;
 import com.vaadin.flow.server.VaadinSession;
+import com.vaadin.flow.server.WrappedSession;
 
 import javax.servlet.ServletException;
 
@@ -21,20 +23,18 @@ import javax.servlet.ServletException;
 @PageTitle("Login")
 public class LoginScreen extends VerticalLayout {
 
-    private final TextField usernameField;
-    private final PasswordField passwordField;
-    private final NavBar navBar;
-    private final Button loginButton;
+    private final TextField usernameField = new TextField("Identifiant");;
+    private final PasswordField passwordField = new PasswordField("Mot de passe");
+    private final NavBar navBar = new NavBar();
+    private final Button loginButton = new LoginButton();
+    private EventBus eventBus = new EventBus();
 
     public LoginScreen() {
-        EventBus eventBus = new EventBus();
+        initView();
+    }
 
-        navBar = new NavBar();
+    private void initView() {
         navBar.hideLoginButtons();
-        usernameField = new TextField("Identifiant");
-        usernameField.focus();
-        passwordField = new PasswordField("Mot de passe");
-        loginButton = new LoginButton();
         loginButton.addClickListener(buttonClickEvent -> doLogin());
         add(navBar, usernameField, passwordField, loginButton);
     }
