@@ -7,7 +7,6 @@ import ch.hesge.vaadin.ui.common.components.*;
 import com.google.common.eventbus.EventBus;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -15,7 +14,7 @@ import com.vaadin.flow.router.*;
 import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.server.WrappedSession;
 
-import javax.ejb.EJB;
+
 import javax.inject.Inject;
 
 
@@ -77,9 +76,9 @@ public class NewBook extends VerticalLayout {
     }
 
     private boolean formIsValid() {
-        //This method should be done the proper way in the From component
+        //This should be handled by the Form component (if created)
         return form.getChildren()
-                .filter(c ->  c instanceof FormTextField || c instanceof YearField)
+                .filter(c ->  c instanceof IsValidable)
                 .allMatch(c -> ((IsValidable)c).isValid());
     }
 

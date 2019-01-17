@@ -83,6 +83,13 @@
             <artifactId>guava</artifactId>
             <version>19.0</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.openjpa/openjpa -->
+        <dependency>
+            <groupId>org.apache.openjpa</groupId>
+            <artifactId>openjpa</artifactId>
+            <version>3.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
