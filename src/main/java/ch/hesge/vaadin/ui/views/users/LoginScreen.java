@@ -4,7 +4,6 @@ import ch.hesge.vaadin.ui.common.components.LoginButton;
 import ch.hesge.vaadin.ui.common.components.NavBar;
 import com.google.common.eventbus.EventBus;
 import com.sun.security.auth.UserPrincipal;
-import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -14,7 +13,6 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.VaadinServletRequest;
 import com.vaadin.flow.server.VaadinSession;
-import com.vaadin.flow.server.WrappedSession;
 
 import javax.servlet.ServletException;
 
@@ -42,9 +40,9 @@ public class LoginScreen extends VerticalLayout {
 
     private void doLogin() {
         VaadinServletRequest request =  VaadinServletRequest.getCurrent();
+        String username = usernameField.getValue();
+        String password = passwordField.getValue();
         if (! isUserAuthenticated(request)) {
-            String username = usernameField.getValue();
-            String password = passwordField.getValue();
             try {
                 request.login(username, password);
                 VaadinSession.getCurrent().getSession().setAttribute("logged_user", new UserPrincipal(username));
@@ -54,6 +52,12 @@ public class LoginScreen extends VerticalLayout {
             } catch (ServletException e) {
                 Notification.show("Identifiant ou mot de passe erroné.", 3000, Notification.Position.MIDDLE);
             }
+        } else {
+            Notification.show("Vous êtes déjà connecté. \n Veuillez vous déconnecter avant de changer d'utilisateurs");
+            try{
+                request.logout();
+                request.login(username, password);
+            } catch (ServletException e) { e.printStackTrace(); }
         }
     }
 

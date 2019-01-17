@@ -32,21 +32,21 @@ public class BooksList extends VerticalLayout {
     @Inject
     public BooksList(BookManager bookManager) {
         this.bookManager = bookManager;
-        WrappedSession session = VaadinSession.getCurrent().getSession();
-        try {
-            isAuthenticated = (boolean) session.getAttribute("logged");
-        } catch (Exception e) { e.printStackTrace(); }
-
+        setUserStatus();
         initView();
         updateView();
     }
 
+    private void setUserStatus() {
+        WrappedSession session = VaadinSession.getCurrent().getSession();
+        try {
+            isAuthenticated = (boolean) session.getAttribute("logged");
+        } catch (Exception e) { e.printStackTrace(); }
+    }
+
     private void initView() {
-        if(isAuthenticated) {
-            initViewForAuthenticatedUser();
-        } else {
-            initBasicView();
-        }
+        if(isAuthenticated) initViewForAuthenticatedUser();
+        else initBasicView();
     }
 
     private void initBasicView() {
@@ -125,6 +125,5 @@ public class BooksList extends VerticalLayout {
     private void updateView() {
         grid.setItems(bookManager.getBooks());
     }
-
-
+    
 }

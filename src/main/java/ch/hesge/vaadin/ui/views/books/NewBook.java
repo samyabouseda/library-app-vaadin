@@ -14,7 +14,6 @@ import com.vaadin.flow.router.*;
 import com.vaadin.flow.server.VaadinSession;
 import com.vaadin.flow.server.WrappedSession;
 
-
 import javax.inject.Inject;
 
 
@@ -37,13 +36,13 @@ public class NewBook extends VerticalLayout {
     @Inject
     public NewBook(BookManager bookManager) {
         this.bookManager = bookManager;
+        setUserStatus();
+    }
+
+    private void setUserStatus() {
         session = VaadinSession.getCurrent().getSession();
-        if(userSessionExist()) {
-            if(userIsLogged()) { initView(); }
-            else { redirectTo("403"); }
-        } else {
-            redirectTo("403");
-        }
+        if(userSessionExist() && userIsLogged()) initView();
+        else redirectTo("403");
     }
 
     private boolean userIsLogged() {
@@ -63,7 +62,7 @@ public class NewBook extends VerticalLayout {
         createBtn.addClickListener(buttonClickEvent -> saveBook());
         eventBus.register(createBtn);
         form.add(title, author, editor, year);
-        add(navBar, form, createBtn); // Should create a Form component extending VerticalLayout
+        add(navBar, form, createBtn);
     }
 
     private void saveBook() {
@@ -76,7 +75,6 @@ public class NewBook extends VerticalLayout {
     }
 
     private boolean formIsValid() {
-        //This should be handled by the Form component (if created)
         return form.getChildren()
                 .filter(c ->  c instanceof IsValidable)
                 .allMatch(c -> ((IsValidable)c).isValid());
