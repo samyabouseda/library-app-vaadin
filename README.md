@@ -8,14 +8,14 @@ Simple Library is a very simple app built with [Vaadin](https://vaadin.com/) to 
 
 ### Installing
 
-Unzip the downloaded TomEE file into a directory. Tomcat will be unzipped into a directory called something similar to
+Unzip the downloaded TomEE file into a directory. TomEE will be unzipped into a directory called something similar to
 
 ```
-apache-tomcat-9.0.{xx}
+apache-tomee-webprofile-7.0.x.
 ```
 
 ### Adding new user
-Tomcat configuration files are found in the directory: CATALINA_HOME/conf (where CATALINA_HOME environment variable is the Tomcat installation directory). In the $CATALINA_HOME/conf directory, locate the `tomcat-ursers.xml` file and open it with a text editor.
+Tomcat configuration files are found in the directory: CATALINA_HOME/conf (where CATALINA_HOME environment variable is the TomEE installation directory). In the $CATALINA_HOME/conf directory, locate the `tomcat-ursers.xml` file and open it with a text editor.
 
 In order to add new users, you need to add the following lines to the file.
 ```
