@@ -55,7 +55,9 @@ public class NavBar extends HorizontalLayout {
         session.invalidate();
         try {
             request.logout();
-        } catch (ServletException e) { }
+        } catch (ServletException e) {
+            // TODO: Figure out what to do here...
+        }
         this.getUI().ifPresent(ui -> ui.navigate(""));
     }
 
@@ -101,7 +103,6 @@ public class NavBar extends HorizontalLayout {
         titleStyle.set("position", "absolute");
         titleStyle.set("left", "0");
         titleStyle.set("font-size", "24px");
-
     }
 
 
