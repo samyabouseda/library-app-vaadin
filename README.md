@@ -1,15 +1,15 @@
 # A simple library management app
-Simple Library is a very simple app built with [Vaadin](https://vaadin.com/) to apply and test my knowledge of the framework.
+Simple Library is a very simple app built with [Vaadin](https://vaadin.com/) to apply and test our knowledge of the framework.
 
-### Installing
+### Prerequisites
 
-A step by step series of examples that tell you how to get a development env running
 1. Download the [TomEE WebProfile](https://tomee.apache.org/download-ng.html) v7.0.x.
-2. Download the WAR of the app [here](http://somelink.com).
+2. Download the WAR of the app [here](https://app.box.com/s/47o6s4ss3huw1ixzud74r9x5s6o988mt).
 
 ### Adding new user
-Then locat the `tomcat-ursers.xml` file which should be   $CATALINA_HOME/bin/startup.sh
-In order to add new users, you need to add the following lines to tomcat-users.xml.
+Tomcat configuration files are found in the directory: CATALINA_HOME/conf (where CATALINA_HOME environment variable is the Tomcat installation directory). In the $CATALINA_HOME/conf directory, locate the `tomcat-ursers.xml` file and open it with a text editor.
+
+In order to add new users, you need to add the following lines to the file.
 ```
 <role rolename="ADMIN" />
 <user username="admin" password="<must-be-changed>" roles="ADMIN" />
@@ -32,26 +32,19 @@ Here is an example of such a tomcat-users.xml
 </tomcat-users>
 ```
 
-You would then user "highlander" as username and "ramirez" as password while login to the app.
+You would then use "highlander" as username and "ramirez" as password when login to the app.
 
 ### Deployment
-1. Go inside of the Place the WAR inside of the webapps directory.
-```
-$CATALINA_HOME\webapps 
-```
-Web applications are deployed under the $CATALINA_HOME\webapps directory.
+Web applications are deployed under the $CATALINA_HOME\webapps directory. One simple way to deploy the app is by dropping the WAR file (downloaded previously) into the $CATALINA_HOME\webapps directory of the Tomcat instance.
 
-2. Start the Tomcat server by simply running the startup script located at $CATALINA_HOME\bin\startup. There is a .bat and a .sh in every installation.
+Once it's done, you can start the Tomcat server by simply running the startup script located in the $CATALINA_HOME\bin\ directory. There is a `startup.bat` and a `startup.sh` in every installation.
 
-```
-$CATALINA_HOME/bin/startup.sh
-```
-Choose the appropriate option depending on whether you are using a Windows or Unix based operating system.
+Choose the appropriate option depending on whether you are using a Windows(.bat) or Unix(.sh) based operating system.
 
 ### Using the app
-In order to access the app, open your favorite browser and go to:
+Finnaly to access the app, open your favorite web browser and go to:
 
-[http://localhost:8080/simple_library_war_exploded/](http://localhost:8080/simple_library_war_exploded/)
+[http://localhost:8080/library](http://localhost:8080/library)
 
 ## Authors
 
