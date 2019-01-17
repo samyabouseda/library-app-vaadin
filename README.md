@@ -43,9 +43,9 @@ Here is an example of such a tomcat-users.xml
 You would then use "highlander" as username and "ramirez" as password when login to the app.
 
 ### Deployment
-Web applications are deployed under the $CATALINA_HOME\webapps directory. One simple way to deploy the app is by dropping the WAR file (downloaded previously) into the $CATALINA_HOME\webapps directory of the Tomcat instance.
+Web applications are deployed under the $CATALINA_HOME/webapps directory. One simple way to deploy the app is by dropping the WAR file (downloaded previously) into the $CATALINA_HOME/webapps directory of the Tomcat instance.
 
-Once it's done, you can start the Tomcat server by simply running the startup script located in the $CATALINA_HOME\bin\ directory. There is a `startup.bat` and a `startup.sh` in every installation.
+Once it's done, you can start the Tomcat server by simply running the startup script located in the $CATALINA_HOME/bin directory. There is a `startup.bat` and a `startup.sh` in every installation.
 
 Choose the appropriate option depending on whether you are using a Windows(.bat) or Unix(.sh) based operating system.
 
