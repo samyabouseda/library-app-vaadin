@@ -6,6 +6,14 @@ Simple Library is a very simple app built with [Vaadin](https://vaadin.com/) to 
 1. Download the [TomEE WebProfile](https://tomee.apache.org/download-ng.html) v7.0.x.
 2. Download the WAR of the app [here](https://app.box.com/s/47o6s4ss3huw1ixzud74r9x5s6o988mt).
 
+### Installing
+
+Unzip the downloaded TomEE file into a directory. Tomcat will be unzipped into a directory called something similar to
+
+```
+apache-tomcat-9.0.{xx}
+```
+
 ### Adding new user
 Tomcat configuration files are found in the directory: CATALINA_HOME/conf (where CATALINA_HOME environment variable is the Tomcat installation directory). In the $CATALINA_HOME/conf directory, locate the `tomcat-ursers.xml` file and open it with a text editor.
 
