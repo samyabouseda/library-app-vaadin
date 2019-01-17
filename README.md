@@ -49,6 +49,10 @@ Once it's done, you can start the Tomcat server by simply running the startup sc
 
 Choose the appropriate option depending on whether you are using a Windows(.bat) or Unix(.sh) based operating system.
 
+### Setting JAVA_HOME
+It's possible that you run into an error if the JAVA_HOME environment variable is not set.
+To fix this, follow the steps [here](https://confluence.atlassian.com/crowd/setting-java_home-61604243.html).
+
 ### Using the app
 Finnaly to access the app, open your favorite web browser and go to:
 
