@@ -1,7 +1,6 @@
 package ch.hesge.vaadin.ui.views.users;
 
-import ch.hesge.vaadin.ui.common.components.LoginButton;
-import ch.hesge.vaadin.ui.common.components.NavBar;
+import ch.hesge.vaadin.ui.common.NavBar;
 import com.google.common.eventbus.EventBus;
 import com.sun.security.auth.UserPrincipal;
 import com.vaadin.flow.component.button.Button;
@@ -24,7 +23,7 @@ public class LoginScreen extends VerticalLayout {
     private final TextField usernameField = new TextField("Identifiant");;
     private final PasswordField passwordField = new PasswordField("Mot de passe");
     private final NavBar navBar = new NavBar();
-    private final Button loginButton = new LoginButton();
+    private final Button loginButton = new Button("Se connecter");
     private EventBus eventBus = new EventBus();
 
     public LoginScreen() {

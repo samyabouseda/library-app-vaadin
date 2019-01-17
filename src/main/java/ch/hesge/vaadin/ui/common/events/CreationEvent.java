@@ -1,4 +1,4 @@
-package ch.hesge.vaadin.ui.common.components;
+package ch.hesge.vaadin.ui.common.events;
 
 public class CreationEvent {
 

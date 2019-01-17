@@ -1,7 +1,7 @@
 package ch.hesge.vaadin.ui.views;
 
 
-import ch.hesge.vaadin.ui.common.components.NavBar;
+import ch.hesge.vaadin.ui.common.NavBar;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;

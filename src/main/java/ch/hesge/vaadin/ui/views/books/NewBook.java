@@ -3,7 +3,11 @@ package ch.hesge.vaadin.ui.views.books;
 
 import ch.hesge.vaadin.backend.Book;
 import ch.hesge.vaadin.backend.BookManager;
-import ch.hesge.vaadin.ui.common.components.*;
+import ch.hesge.vaadin.ui.common.events.CreationEvent;
+import ch.hesge.vaadin.ui.common.textfields.IsValidable;
+import ch.hesge.vaadin.ui.common.NavBar;
+import ch.hesge.vaadin.ui.common.textfields.FormTextField;
+import ch.hesge.vaadin.ui.common.textfields.YearField;
 import com.google.common.eventbus.EventBus;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;

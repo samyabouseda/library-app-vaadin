@@ -1,4 +1,4 @@
-package ch.hesge.vaadin.ui.common.components;
+package ch.hesge.vaadin.ui.common.textfields;
 
 import com.vaadin.flow.data.binder.ValidationResult;
 import com.vaadin.flow.data.binder.Validator;

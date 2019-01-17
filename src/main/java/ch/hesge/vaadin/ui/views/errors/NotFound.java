@@ -1,7 +1,7 @@
-package ch.hesge.vaadin.ui.views.errorpages;
+package ch.hesge.vaadin.ui.views.errors;
 
 
-import ch.hesge.vaadin.ui.common.components.NavBar;
+import ch.hesge.vaadin.ui.common.NavBar;
 import ch.hesge.vaadin.ui.views.Home;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;

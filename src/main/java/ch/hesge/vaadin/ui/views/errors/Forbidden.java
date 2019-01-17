@@ -1,18 +1,14 @@
-package ch.hesge.vaadin.ui.views.errorpages;
+package ch.hesge.vaadin.ui.views.errors;
 
 
-import ch.hesge.vaadin.ui.common.components.NavBar;
-import ch.hesge.vaadin.ui.views.Home;
+import ch.hesge.vaadin.ui.common.NavBar;
 import ch.hesge.vaadin.ui.views.users.LoginScreen;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.page.Page;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
-
-import javax.servlet.annotation.WebServlet;
 
 @Route("403")
 @PageTitle("Forbidden")
