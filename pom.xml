@@ -3,7 +3,7 @@
     <groupId>ch.hesge.vaadin</groupId>
     <artifactId>simple-library</artifactId>
     <name>Simple Library</name>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>war</packaging>
 
     <properties>
@@ -120,6 +120,8 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <finalName>library</finalName>
     </build>
 
     <profiles>
