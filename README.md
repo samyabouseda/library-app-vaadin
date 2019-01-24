@@ -61,4 +61,3 @@ Finnaly to access the app, open your favorite web browser and go to:
 ## Authors
 
 * **Samy Abouseda** - [samyabouseda](https://github.com/samyabouseda)
-* **Thomas Carreira** - [ThomasCarreira](https://github.com/ThomasCarreira)
