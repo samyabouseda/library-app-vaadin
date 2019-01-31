@@ -1,5 +1,5 @@
 # A simple library management app
-Simple Library is a very simple app built with [Vaadin](https://vaadin.com/) to apply and test our knowledge of the framework.
+A simple library management app built with [Vaadin](https://vaadin.com/) to apply and test our knowledge of the framework.
 
 ### Prerequisites
 
