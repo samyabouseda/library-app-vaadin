@@ -44,5 +44,9 @@ public class BookManager {
         book.setYear(modifiedBook.getYear());
         entityManager.merge(book);
     }
+
+    public boolean hasBooks() {
+        return ! getBooks().isEmpty();
+    }
 }
 
