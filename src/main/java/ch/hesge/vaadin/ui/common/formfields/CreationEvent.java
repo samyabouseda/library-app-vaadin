@@ -1,4 +1,4 @@
-package ch.hesge.vaadin.ui.common.events;
+package ch.hesge.vaadin.ui.common.formfields;
 
 public class CreationEvent {
 

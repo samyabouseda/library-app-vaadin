@@ -1,4 +1,4 @@
-package ch.hesge.vaadin.ui.common.textfields;
+package ch.hesge.vaadin.ui.common.formfields;
 
 public interface IsValidable {
 

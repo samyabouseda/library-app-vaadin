@@ -1,6 +1,5 @@
-package ch.hesge.vaadin.ui.common.textfields;
+package ch.hesge.vaadin.ui.common.formfields;
 
-import ch.hesge.vaadin.ui.common.events.CreationEvent;
 import com.google.common.eventbus.Subscribe;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.HasValidator;
