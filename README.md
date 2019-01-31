@@ -1,4 +1,5 @@
 # A simple library management app
+<<<<<<< HEAD
 A simple library management app built with [Vaadin](https://vaadin.com/) to apply and test our knowledge of the framework.
 
 ### Prerequisites
@@ -61,4 +62,3 @@ Finnaly to access the app, open your favorite web browser and go to:
 ## Authors
 
 * **Samy Abouseda** - [samyabouseda](https://github.com/samyabouseda)
-* **Thomas Carreira** - [ThomasCarreira](https://github.com/ThomasCarreira)
