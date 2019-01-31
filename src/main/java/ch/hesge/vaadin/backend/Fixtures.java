@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class Fixtures implements ServletContextListener {
 
-    BookManager bookManager;
+    private BookManager bookManager;
 
     @Inject
     public Fixtures(BookManager bookManager) {
